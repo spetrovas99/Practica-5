@@ -1,0 +1,30 @@
+ type Query {
+        ok: String!
+        equipos:[Equipo!]
+        partidos:[Partido!]
+       
+    }
+    type Mutation {
+        addEquipo(nombre: String!):Equipo!
+        addPartido(resultado: String!,enJuego:Boolean!,finalizado:Boolean!,equipos:[String!]):Partido!
+        actualizarResultados(_id:String!,resultado:String!): Partido!
+        inicializarPartido(_id:String!): Partido!
+        finalizarPartido(_id:String!):Partido!
+        tellyou(_id:String!):Int!
+    }
+    type Subscription{
+        subscribeEq(_id:String!):String!
+        subscribePar(_id:String!):String!
+    }
+    type Equipo {
+        nombre: String!
+        _id: String!
+    }
+    type Partido{
+        _id:String!
+        fecha: String!
+        resultado: String!
+        enJuego: Boolean!
+        finalizado: Boolean!
+        equipos: [Equipo!]
+    }
